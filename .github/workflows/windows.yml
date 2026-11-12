@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - .github/workflows/windows.yml
+      - packages/media_kit_libs_windows_video/windows/CMakeLists.txt
 
 permissions:
   contents: read
@@ -60,4 +61,5 @@ jobs:
           path: dist/windows/*
           if-no-files-found: error
           retention-days: 14
+
 
