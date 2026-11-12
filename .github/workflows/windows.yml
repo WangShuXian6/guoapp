@@ -47,6 +47,8 @@ jobs:
           if (-not $exe) { throw 'MinGW-w64 installation failed: gcc not found' }
           Split-Path $exe | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           & $exe --version | Select-Object -First 1
+      - name: Resolve dependencies
+        run: flutter pub get
       - name: Build and package
         run: python scripts/build_windows.py ${{ matrix.arguments }}
         env:
@@ -58,3 +60,4 @@ jobs:
           path: dist/windows/*
           if-no-files-found: error
           retention-days: 14
+
